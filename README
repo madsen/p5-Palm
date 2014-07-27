@@ -1,49 +1,36 @@
-	This is p5-Palm, a set of Perl 5 modules for reading,
+p5-Palm version {{$version}}, released {{$date}}
+
+This is p5-Palm, a set of Perl 5 modules for reading,
 manipulating, and writing the .pdb and .prc database files used by
-PalmOS devices such as the PalmPilot and its successors.
+Palm OS devices such as the PalmPilot and its successors.
 
-Copyright (C) 1999-2000 by Andrew Arensburger
+You'll also need the Palm::PDB and Palm::Raw modules.  They used to be
+distributed as part of p5-Palm, but were split out into their own
+distribution because they are also useful for manipulating the
+Mobipocket e-book format, which is also used for Amazon Kindle books.
+The modules remaining in p5-Palm are generally useful only if you're
+dealing with files from actual Palm OS devices.
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the Artistic License, a copy of which
-can be found with the Perl distribution.
 
-This code is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-Artistic License for more details.
 
-* INSTALLING:
+INSTALLATION
 
-This is pretty standard:
+To install this module, run the following commands:
 
-	- Run "perl Makefile.PL" to create the Makefile.
-	- Run "make" to build everything.
-	- Run "make install" to install the package.
+{{ $t->build_instructions }}
 
-Easy, huh?
 
-* DOCUMENTATION:
 
-All documentation is in the form of PODs embedded in the module
-files themselves. Use pod2text Palm/PDB.pm to read the
-documentation for Palm::PDB. You'll want to start with Palm::PDB,
-then Palm::Raw, then the others.
+CONTRIBUTING
 
-* FEEDBACK:
+The source is in GitHub: {{ $meta{resources}{repository}{web} }}
 
-	If you have any comments, suggestions, bug reports, patches,
-etc., please send mail to the maintainer, brian d foy, at
-<bdfoy@cpan.org>.
-
-* CONTRIBUTING
-
-The source is in Github: http://github.com/briandfoy/p5-Palm/tree/master
-
-If you have a change, fork the repo, make your patch, and send me a 
+If you have a change, fork the repo, make your patch, and send me a
 pull request. Don't be scared; it's easy!
 
-* AUTHORS AND CONTRIBUTORS:
+
+
+AUTHORS AND CONTRIBUTORS
 
 	Andrew Arensburger <arensb@ooblick.com>: principal perpetrator
 	Robert Norris <rob@nauseum.org>: patch for empty PDBs
@@ -58,3 +45,10 @@ pull request. Don't be scared; it's easy!
 	Kurt Starsinic <kstar@cpan.org>: documentation patch.
 	Seb Wills <saw27@mrao.cam.ac.uk>: documentation.
 	brian d foy <bdfoy@cpan.org>
+	Christopher J. Madsen <perl@cjmweb.net>
+
+
+
+COPYRIGHT AND LICENSE
+
+{{ local $_ = $zilla->license->notice; chomp; $_ }}

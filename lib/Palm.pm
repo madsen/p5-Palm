@@ -1,22 +1,24 @@
-# Palm.pm
+package Palm;
 #
-# Perl module for reading and writing Palm databases (both PDB and PRC).
+# ABSTRACT: Palm OS utility functions
 #
 #	Copyright (C) 1999, 2000, Andrew Arensburger.
-#	You may distribute this file under the terms of the Artistic
-#	License, as specified in the README file.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the same terms as Perl itself.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
+# GNU General Public License or the Artistic License for more details.
 
 use strict;
 use warnings;
-package Palm;
 use vars qw( $VERSION );
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.013';
-
-=head1 NAME
-
-Palm - Palm OS utility functions
+$VERSION = '1.014';
+# This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 =head1 SYNOPSIS
 
@@ -32,10 +34,10 @@ my $EPOCH_1904 = 2082844800;		# Difference between Palm's
 					# in seconds.
 
 =head2 palm2epoch
-	
+
 	my @parts = localtime( palm2epoch($palmtime) );
 
-Converts a PalmOS timestamp to a Unix Epoch time. Note, however, that PalmOS
+Converts a S<Palm OS> timestamp to a Unix Epoch time. Note, however, that S<Palm OS>
 time is in the timezone of the Palm itself while Epoch is defined to be in
 the GMT timezone. Further conversion may be necessary.
 
@@ -46,7 +48,7 @@ sub palm2epoch {
 }
 
 =head2 epoch2palm
-	
+
 	my $palmtime = epoch2palm( time() );
 
 Converts Unix epoch time to Palm OS time.
@@ -58,10 +60,10 @@ sub epoch2palm {
 }
 
 =head2 mkpdbname
-	
+
 	$PDB->Write( mkpdbname($PDB->{name}) );
 
-Convert a PalmOS database name to a 7-bit ASCII representation. Native
+Convert a S<Palm OS> database name to a 7-bit ASCII representation. Native
 Palm database names can be found in ISO-8859-1 encoding. This encoding
 isn't going to generate the most portable of filenames and, in particular,
 ColdSync databases use this representation.
@@ -79,7 +81,7 @@ sub mkpdbname {
 The source is in Github:
 
 	http://github.com/briandfoy/p5-Palm/tree/master
-	
+
 =head1 AUTHOR
 
 Alessandro Zummo, C<< <a.zummo@towertech.it> >>

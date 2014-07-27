@@ -1,19 +1,23 @@
-# Palm::DateTime.pm
+package Palm::DateTime;
 #
-# Package to deal with various (palm) date/time formats..
+# ABSTRACT: Deal with various Palm OS date/time formats
 #
-#	Copyright (C) 2001-2002, Alessandro Zummo <a.zummo@towertech.it> 
-#	You may distribute this file under the terms of the Artistic
-#	License, as specified in the README file.
+#	Copyright (C) 2001-2002, Alessandro Zummo <a.zummo@towertech.it>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the same terms as Perl itself.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
+# GNU General Public License or the Artistic License for more details.
 #
 # Data types:
 #
 #  secs		- Seconds since whatever time the system considers to be The Epoch
-#  dlptime	- PalmOS DlpDateTimeType (raw)
-#  datetime	- PalmOS DateTimeType (raw)	
+#  dlptime	- Palm OS DlpDateTimeType (raw)
+#  datetime	- Palm OS DateTimeType (raw)
 #  palmtime	- Decoded date/time
-
-package Palm::DateTime;
 
 use strict;
 
@@ -22,7 +26,8 @@ use POSIX;
 use vars qw($VERSION);
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.013';
+$VERSION = '1.014';
+# This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @Palm::DateTime::ISA = qw( Exporter );
 
@@ -110,7 +115,7 @@ sub secs_to_dlptime
 	my ($secs) = @_;
 
 	return palmtime_to_dlptime(secs_to_palmtime($secs));
-} 
+}
 
 sub dlptime_to_secs
 {
@@ -127,7 +132,7 @@ sub palmtime_to_secs
 				$palmtime->{'minute'},
 				$palmtime->{'hour'},
 				$palmtime->{'day'},
-				$palmtime->{'month'} - 1,	# Palm used 1-12, mktime needs 0-11 
+				$palmtime->{'month'} - 1,	# Palm used 1-12, mktime needs 0-11
 				$palmtime->{'year'} - 1900,
 				0,
 				0,

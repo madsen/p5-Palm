@@ -760,11 +760,11 @@ C<pdbdump> I<[options]> F<filename>
 
 =head1 DESCRIPTION
 
-C<pdbdump> reads a PalmOS F<.pdb> file, parses it, and prints its
+C<pdbdump> reads a S<Palm OS> F<.pdb> file, parses it, and prints its
 contents. This includes both a hex dump of the raw data of each piece,
 and a human-readable list of the various values, insofar as possible.
 The aim of C<pdbdump> is to allow one to verify whether a particular
-file is a well-formed PalmOS database file and if not, where the error
+file is a well-formed S<Palm OS> database file and if not, where the error
 lies.
 
 If the database is of a known type, C<pdbdump> parses the AppInfo

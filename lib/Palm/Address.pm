@@ -1,13 +1,18 @@
-# Palm::Address.pm
-# 
-# Perl class for dealing with Palm AddressBook databases. 
+package Palm::Address;
+#
+# ABSTRACT: Handler for Palm OS AddressBook databases
 #
 #	Copyright (C) 1999, 2000, Andrew Arensburger.
-#	You may distribute this file under the terms of the Artistic
-#	License, as specified in the README file.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the same terms as Perl itself.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
+# GNU General Public License or the Artistic License for more details.
 
 use strict;
-package Palm::Address;
 use Palm::Raw();
 use Palm::StdAppInfo();
 
@@ -16,16 +21,13 @@ use vars qw( $VERSION @ISA
 	%fieldMapBits );
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.013';
+$VERSION = '1.014';
+# This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @ISA = qw( Palm::StdAppInfo Palm::Raw );
 
 # AddressDB records are quite flexible and customizable, and therefore
 # a pain in the ass to deal with correctly.
-
-=head1 NAME
-
-Palm::Address - Handler for Palm AddressBook databases
 
 =head1 SYNOPSIS
 
@@ -328,7 +330,7 @@ sub new_Record
 	# but every AddressDB record has these.
 	$retval->{fields} = {
 		name		=> undef,
-		firstName	=> undef, 
+		firstName	=> undef,
 		company		=> undef,
 		phone1		=> undef,
 		phone2		=> undef,
@@ -632,10 +634,10 @@ sub PackRecord
 		{
 			$fieldMap |= $fieldMapBits{$fieldname};
 		}
-		else 
-		{ 
-			$record->{fields}{$fieldname} = ""; 
-		} 
+		else
+		{
+			$record->{fields}{$fieldname} = "";
+		}
 	}
 
 	$retval .= pack("N", $fieldMap);
@@ -680,7 +682,7 @@ __END__
 The source is in Github:
 
 	http://github.com/briandfoy/p5-Palm/tree/master
-	
+
 =head1 AUTHOR
 
 Alessandro Zummo, C<< <a.zummo@towertech.it> >>

@@ -1,25 +1,27 @@
-# Palm::Mail.pm
-# 
-# Perl class for dealing with Palm Mail databases. 
+package Palm::Mail;
+#
+# ABSTRACT: Handler for Palm OS Mail databases
 #
 #	Copyright (C) 1999, 2000, Andrew Arensburger.
-#	You may distribute this file under the terms of the Artistic
-#	License, as specified in the README file.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the same terms as Perl itself.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
+# GNU General Public License or the Artistic License for more details.
 
 use strict;
-package Palm::Mail;
 use Palm::Raw();
 use Palm::StdAppInfo();
 use vars qw( $VERSION @ISA );
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.013';
+$VERSION = '1.014';
+# This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @ISA = qw( Palm::StdAppInfo Palm::Raw );
-
-=head1 NAME
-
-Palm::Mail - Handler for Palm Mail databases.
 
 =head1 SYNOPSIS
 
@@ -428,7 +430,7 @@ __END__
 The source is in Github:
 
 	http://github.com/briandfoy/p5-Palm/tree/master
-	
+
 =head1 AUTHOR
 
 Alessandro Zummo, C<< <a.zummo@towertech.it> >>

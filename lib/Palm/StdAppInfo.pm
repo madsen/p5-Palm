@@ -1,13 +1,18 @@
-# Palm::StdAppInfo.pm
+package Palm::StdAppInfo;
 #
-# Class for dealing with standard AppInfo blocks in PDBs.
+# ABSTRACT: Handle standard AppInfo blocks in Palm OS PDBs
 #
 #	Copyright (C) 1999, 2000, Andrew Arensburger.
-#	You may distribute this file under the terms of the Artistic
-#	License, as specified in the README file.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the same terms as Perl itself.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
+# GNU General Public License or the Artistic License for more details.
 
 use strict;
-package Palm::StdAppInfo;
 use Palm::Raw();
 
 # Don't harass me about these variables
@@ -15,13 +20,10 @@ use vars qw( $VERSION @ISA $error );
 	# $error acts like $! in that it reports the error that occurred
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.013';
+$VERSION = '1.014';
+# This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @ISA = qw( Palm::Raw );
-
-=head1 NAME
-
-Palm::StdAppInfo - Handles standard AppInfo block (categories)
 
 =head1 SYNOPSIS
 
@@ -65,7 +67,7 @@ The C<Palm::StdAppInfo> class deals with this common format:
 	$pdb = new Palm::PDB;
 	$pdb->Load("myfile.pdb");
 
-	@categories   = @{$pdb->{appinfo}{categories}};
+	@categories  = @{ $pdb->{appinfo}{categories} };
 	$lastUniqueID =   $pdb->{appinfo}{lastUniqueID};
 	$other        =   $pdb->{appinfo}{other};
 
@@ -141,7 +143,7 @@ use constant APPINFO_PADDING => 1;	# Whether to add the padding byte at
 use constant numCategories => 16;	# Number of categories in AppInfo block
 use constant categoryLength => 16;	# Length of category names
 use constant stdAppInfoSize =>		# Length of a standard AppInfo block
-		2 +	
+		2 +
 		(categoryLength * numCategories) +
 		numCategories +
 		1 + 1;			# The padding byte at the end may
@@ -622,7 +624,7 @@ __END__
 The source is in Github:
 
 	http://github.com/briandfoy/p5-Palm/tree/master
-	
+
 =head1 AUTHOR
 
 Alessandro Zummo, C<< <a.zummo@towertech.it> >>

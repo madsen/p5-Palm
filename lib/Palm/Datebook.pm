@@ -1,27 +1,29 @@
-# Palm::Datebook.pm
-# 
-# Perl class for dealing with Palm DateBook and Calendar databases. 
+package Palm::Datebook;
+#
+# ABSTRACT: Handler for Palm OS DateBook and Calendar databases
 #
 #	Copyright (C) 1999-2001, Andrew Arensburger.
-#	You may distribute this file under the terms of the Artistic
-#	License, as specified in the README file.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the same terms as Perl itself.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
+# GNU General Public License or the Artistic License for more details.
 
 use strict;
-package Palm::Datebook;
 use Palm::Raw();
 use Palm::StdAppInfo();
 
 use vars qw( $VERSION @ISA );
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.013';
+$VERSION = '1.014';
+# This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @ISA = qw( Palm::StdAppInfo Palm::Raw );
 
-
-=head1 NAME
-
-Palm::Datebook - Handler for Palm DateBook and Calendar databases.
 
 =head1 SYNOPSIS
 
@@ -76,7 +78,7 @@ changed. I don't know what this means.
     $record->{alarm}{unit}
 
 If the record has an alarm associated with it, the
-%{$record->{alarm}} hash exists. The "unit" subfield is an integer:
+%{$record->{alarm}Z<>} hash exists. The "unit" subfield is an integer:
 0 for minutes, 1 for hours, 2 for days. The "advance" subfield
 specifies how many units before the event the alarm should ring.
 I<e.g.>, if "unit" is 1 and "advance" is 5, then the alarm will sound
@@ -88,7 +90,7 @@ default. C<< undef $record->{alarm} >> to remove this alarm before writing.
 An alarm icon will still show up in the Datebook if the C<alarm>
 field exists, even with C<advance> set to -1.
 
-    %{$record->{repeat}}
+    %{ $record->{repeat} }
 
 This exists iff this is a repeating event.
 
@@ -114,7 +116,7 @@ Wednesday and Friday.
 
 For weekly events, the following fields are defined:
 
-    @{$record->{repeat}{repeat_days}}
+    @{ $record->{repeat}{repeat_days} }
 
 This is an array of 7 elements; each element is true iff the event
 occurs on the corresponding day. Element 0 is Sunday, element 1 is
@@ -171,14 +173,14 @@ I don't know what this is.
 
 The last day, month and year on which the event occurs.
 
-    @{$record->{exceptions}}
+    @{ $record->{exceptions} }
     $day   = $record->{exceptions}[N][0]
     $month = $record->{exceptions}[N][1]
     $year  = $record->{exceptions}[N][2]
 
 If there are any exceptions to a repeating event, I<e.g.> a weekly
 meeting that was cancelled one time, then the
-@{$record->{exceptions}} array is defined.
+@{$record->{exceptions}Z<>} array is defined.
 
 Each element in this array is a reference to an anonymous array with
 three elements: the day, month, and year of the exception.
@@ -195,7 +197,7 @@ A text string, the location (if any) of the event (Calendar database only).
 
 A text string, the note (if any) attached to the event.
 
-    %{$record->{timezone}}
+    %{ $record->{timezone} }
 
 This exists iff a time zone has been set for the event.
 
@@ -632,10 +634,10 @@ sub PackRecord
 	# XXX - Better to collect data first, then build flags.
 	$flags = $record->{other_flags};
 #  	$flags |= 0x8000 if $record->{when_changed};
-#  	$flags |= 0x4000 if keys %{$record->{alarm}} ne ();
-#  	$flags |= 0x2000 if keys %{$record->{repeat}} ne ();
+#  	$flags |= 0x4000 if keys %{$record->{alarm} } ne ();
+#  	$flags |= 0x2000 if keys %{$record->{repeat} } ne ();
 #  	$flags |= 0x1000 if $record->{note} ne "";
-#  	$flags |= 0x0800 if $#{$record->{exceptions}} >= 0;
+#  	$flags |= 0x0800 if $#{$record->{exceptions} } >= 0;
 #  	$flags |= 0x0400 if $record->{description} ne "";
 #  	$flags |= 0x0200 if $iscal && $record->{location} ne "";
 
@@ -809,7 +811,7 @@ __END__
 The source is in Github:
 
 	http://github.com/briandfoy/p5-Palm/tree/master
-	
+
 =head1 AUTHOR
 
 Alessandro Zummo, C<< <a.zummo@towertech.it> >>

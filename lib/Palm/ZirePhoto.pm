@@ -1,26 +1,29 @@
-# Palm::ZirePhoto.pm
-# 
-# Perl class for dealing with Zire71 photo database.
+package Palm::ZirePhoto;
+#
+# ABSTRACT: Handler for Palm Zire71 Photo thumbnail database
 #
 #	Copyright (C) 2003, Alessandro Zummo.
-#	You may distribute this file under the terms of the Artistic
-#	License, as specified in the README file.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the same terms as Perl itself.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
+# GNU General Public License or the Artistic License for more details.
 
 use strict;
-package Palm::ZirePhoto;
 use Palm::Raw();
 use Palm::StdAppInfo();
 
 use vars qw( $VERSION @ISA );
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.013';
+$VERSION = '1.014';
+# This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @ISA = qw( Palm::StdAppInfo Palm::Raw );
 
-=head1 NAME
-
-Palm::ZirePhoto - Handler for Palm Zire71 Photo thumbnail databases.
 
 =head1 SYNOPSIS
 
@@ -81,7 +84,7 @@ image, one would do something like:
 	my $pdb = new Palm::PDB;
 	$pdb->Load( "image.jpg.pdb" );
 	open F, ">image.jpg";
-	for( @{$pdb->{records}} ) {
+	for( @{ $pdb->{records} } ) {
 		print F substr($_->{'data'}, 8);
 	}
 	close F;
@@ -235,7 +238,7 @@ __END__
 The source is in Github:
 
 	http://github.com/briandfoy/p5-Palm/tree/master
-	
+
 =head1 AUTHOR
 
 Alessandro Zummo, C<< <a.zummo@towertech.it> >>

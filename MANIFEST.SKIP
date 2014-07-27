@@ -63,3 +63,9 @@
 \.lwpcookies
 p5-.*
 Palm-.*
+
+\bcjm_
+^MANIFEST\.
+^README\.md
+^dist\.ini$
+^tools/loom\.pl
