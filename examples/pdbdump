@@ -1,8 +1,6 @@
 #!/usr/bin/perl
 #
 # Dump a Palm PDB or PRC database.
-#
-# $Id: pdbdump,v 3.5 2002/04/10 00:58:28 arensb Exp $
 
 use strict;
 use Palm::PDB;
@@ -15,10 +13,9 @@ use Palm::Datebook;
 use Palm::Mail;
 use Palm::ToDo;
 
-use vars qw( $VERSION %PDBHandlers %PRCHandlers $hexdump );
+use vars qw( %PDBHandlers %PRCHandlers $hexdump );
 
-$VERSION = sprintf "%d.%03d_%03d_%03d",
-	'$Revision: 3.5 $ ' =~ m{(\d+)(?:\.(\d+))};
+# VERSION
 
 *PDBHandlers = *Palm::PDB::PDBHandlers;
 *PRCHandlers = *Palm::PDB::PRCHandlers;
@@ -754,6 +751,12 @@ __END__
 
 pdbdump - Print the contents of a Palm PDB file
 
+=head1 VERSION
+
+This document describes version {{$version}} of
+C<pdbdump>, released {{$date}}
+as part of {{$dist}} version {{$dist_version}}.
+
 =head1 SYNOPSIS
 
 C<pdbdump> I<[options]> F<filename>
@@ -792,15 +795,11 @@ helper modules.
 
 =back
 
-=head1 BUGS
+=head1 BUGS AND LIMITATIONS
 
 C<pdbdump> only recognizes record databases (C<.pdb> files), not
 resource databases (C<.prc> files).
 
 =head1 SEE ALSO
 
-Palm::PDB(3)
-
-=head1 AUTHOR
-
-Andrew Arensburger <arensb@ooblick.com>
+L<Palm::PDB>

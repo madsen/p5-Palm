@@ -69,3 +69,4 @@ Palm-.*
 ^README\.md
 ^dist\.ini$
 ^tools/loom\.pl
+^tools/p5Template\.pm

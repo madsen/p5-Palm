@@ -677,27 +677,15 @@ sub PackRecord
 1;
 __END__
 
-=head1 SOURCE CONTROL
-
-The source is in Github:
-
-	http://github.com/briandfoy/p5-Palm/tree/master
-
-=head1 AUTHOR
-
-Alessandro Zummo, C<< <a.zummo@towertech.it> >>
-
-Currently maintained by brian d foy, C<< <bdfoy@cpan.org> >>
-
 =head1 SEE ALSO
 
-Palm::PDB(3)
+L<Palm::PDB>
 
-Palm::StdAppInfo(3)
+L<Palm::StdAppInfo>
 
-=head1 BUGS
+=head1 BUGS AND LIMITATIONS
 
-The new() method initializes the AppInfo block with English labels and
+The C<new()> method initializes the AppInfo block with English labels and
 "United States" as the country.
 
 =cut

@@ -11,13 +11,27 @@ package Palm::DateTime;
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
 # GNU General Public License or the Artistic License for more details.
-#
-# Data types:
-#
-#  secs		- Seconds since whatever time the system considers to be The Epoch
-#  dlptime	- Palm OS DlpDateTimeType (raw)
-#  datetime	- Palm OS DateTimeType (raw)
-#  palmtime	- Decoded date/time
+
+=head1 DESCRIPTION
+
+Palm::DateTime exports subroutines to convert between various Palm OS
+date/time formats.  All subroutines are exported by default.
+
+Data types:
+
+ secs     - Seconds since the system epoch
+ dlptime  - Palm OS DlpDateTimeType (raw)
+ datetime - Palm OS DateTimeType (raw)
+ palmtime - Decoded date/time (a hashref)
+              KEY     VALUES
+              second  0-59
+              minute  0-59
+              hour    0-23
+              day     1-31
+              month   1-12
+              year    4 digits
+
+=cut
 
 use strict;
 
@@ -48,7 +62,16 @@ $VERSION = '1.014';
 	palmtime_to_iso8601
 );
 
+=sub datetime_to_palmtime
 
+  $palmtime = datetime_to_palmtime($datetime)
+
+Converts Palm OS DateTimeType to a palmtime hashref.  In addition to
+the usual keys, C<$palmtime> will contain a C<wday> field.
+
+=cut
+
+#FIXME what values can wday have?
 
 sub datetime_to_palmtime
 {
@@ -71,6 +94,13 @@ sub datetime_to_palmtime
 	return $palmtime;
 }
 
+=sub dlptime_to_palmtime
+
+  $palmtime = dlptime_to_palmtime($dlptime)
+
+Converts Palm OS DlpDateTimeType to a palmtime hashref.
+
+=cut
 
 sub dlptime_to_palmtime
 {
@@ -92,7 +122,15 @@ sub dlptime_to_palmtime
 	return $palmtime;
 }
 
-# This one takes a palmtime structure, which must be completely filled in.
+=sub palmtime_to_dlptime
+
+  $dlptime = palmtime_to_dlptime(\%palmtime)
+
+Converts a palmtime hashref to a Palm OS DlpDateTimeType.
+C<%palmtime> must contain all standard fields.
+
+=cut
+
 # A future version might allow to specify only some of the fields.
 
 sub palmtime_to_dlptime
@@ -110,6 +148,14 @@ sub palmtime_to_dlptime
 				});
 }
 
+=sub secs_to_dlptime
+
+  $dlptime = secs_to_dlptime($secs)
+
+Converts epoch time to a Palm OS DlpDateTimeType.
+
+=cut
+
 sub secs_to_dlptime
 {
 	my ($secs) = @_;
@@ -117,12 +163,29 @@ sub secs_to_dlptime
 	return palmtime_to_dlptime(secs_to_palmtime($secs));
 }
 
+=sub dlptime_to_secs
+
+  $secs = dlptime_to_secs($dlptime)
+
+Converts a Palm OS DlpDateTimeType to epoch time.
+
+=cut
+
 sub dlptime_to_secs
 {
 	my ($dlptime) = @_;
 
 	return palmtime_to_secs(dlptime_to_palmtime($dlptime));
 }
+
+=sub palmtime_to_secs
+
+  $secs = palmtime_to_secs(\%palmtime)
+
+Converts a palmtime hashref to epoch seconds.
+C<%palmtime> must contain all standard fields.
+
+=cut
 
 sub palmtime_to_secs
 {
@@ -138,6 +201,14 @@ sub palmtime_to_secs
 				0,
 				-1);
 }
+
+=sub secs_to_palmtime
+
+  $palmtime = secs_to_palmtime($secs)
+
+Converts epoch seconds to a palmtime hashref.
+
+=cut
 
 sub secs_to_palmtime
 {
@@ -162,7 +233,16 @@ sub secs_to_palmtime
 	return $palmtime;
 }
 
-# This one gives out something like 20011116200051
+=sub palmtime_to_ascii
+
+  $string = palmtime_to_secs(\%palmtime)
+
+Converts a palmtime hashref to a C<YYYYMMDDhhmmss> string
+(e.g. C<20011116200051>).
+C<%palmtime> must contain all standard fields.
+
+=cut
+
 sub palmtime_to_ascii
 {
 	my ($palmtime) = @_;
@@ -178,8 +258,18 @@ sub palmtime_to_ascii
 			'second',
 		});
 }
-# IS8601 compliant: 2001-11-16T20:00:51Z
-# GMT timezone ("Z") is assumed. XXX ?
+
+=sub palmtime_to_iso8601
+
+  $string = palmtime_to_iso8601(\%palmtime)
+
+Converts a palmtime hashref to a C<YYYY-MM-DDThh:mm:ssZ> string
+(e.g. C<2001-11-16T20:00:51Z>).
+C<%palmtime> must contain all standard fields.
+GMT timezone ("Z") is assumed.
+
+=cut
+
 sub palmtime_to_iso8601
 {
 	my ($palmtime) = @_;

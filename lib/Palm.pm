@@ -76,24 +76,9 @@ sub mkpdbname {
 	return $name;
 }
 
-=head1 SOURCE CONTROL
-
-The source is in Github:
-
-	http://github.com/briandfoy/p5-Palm/tree/master
-
-=head1 AUTHOR
-
-Alessandro Zummo, C<< <a.zummo@towertech.it> >>
-
-brian d foy, C<< <bdfoy@cpan.org> >> maintained the module for awhile.
-
-This module is currently unmaintained. You could take it over by
-writing to C<< <modules@perl.org> >>.
-
 =head1 SEE ALSO
 
-Palm::PDB(3)
+L<Palm::PDB>
 
 =cut
 
