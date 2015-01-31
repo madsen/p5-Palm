@@ -14,10 +14,10 @@ package tools::p5Template;
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
 # GNU General Public License or the Artistic License for more details.
 #
-# ABSTRACT: Pod::Loom template for p5-Perl
+# ABSTRACT: Pod::Loom template for p5-Palm
 #---------------------------------------------------------------------
 
-our $VERSION = '1.014';
+our $VERSION = '1.015';
 
 use 5.008;
 use Moose;
@@ -31,7 +31,7 @@ sub section_AUTHOR
 
   my ($dist, $module) = $self->required_attr($title, qw(dist module));
 
-  my $pod = "=head1 $title\n\n";
+  my $pod = "=head1 AUTHORS\n\n";
 
   if ($module eq 'Palm::DateTime' or
       $module eq 'Palm::ZirePhoto') {
