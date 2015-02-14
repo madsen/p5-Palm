@@ -19,7 +19,7 @@ use Palm::StdAppInfo();
 use vars qw( $VERSION @ISA );
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.014';
+$VERSION = '1.015';
 # This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @ISA = qw( Palm::StdAppInfo Palm::Raw );

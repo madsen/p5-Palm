@@ -40,7 +40,7 @@ use POSIX;
 use vars qw($VERSION);
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.014';
+$VERSION = '1.015';
 # This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @Palm::DateTime::ISA = qw( Exporter );
