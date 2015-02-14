@@ -1,6 +1,6 @@
 Revision history for p5-Palm (now the Palm distribution)
 
-1.015  NOT
+1.015  2015-02-14  Release by Christopher J. Madsen
 
 	- Update 00-all_prereqs.t to Test::PrereqsFromMeta 4.23
 
