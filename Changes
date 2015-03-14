@@ -1,6 +1,6 @@
 Revision history for p5-Palm (now the Palm distribution)
 
-1.400  NOT
+1.400  2015-03-14  Release by Christopher J. Madsen
 
 	- Bump version number to be greater than all previous releases.
 	  Palm::StdAppInfo 1.20 was released in p5-Palm 1.008, but
