@@ -17,7 +17,7 @@ use warnings;
 use vars qw( $VERSION );
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.015';
+$VERSION = '1.400';
 # This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 =head1 SYNOPSIS

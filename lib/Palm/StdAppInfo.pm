@@ -20,7 +20,7 @@ use vars qw( $VERSION @ISA $error );
 	# $error acts like $! in that it reports the error that occurred
 
 # One liner, to allow MakeMaker to work.
-$VERSION = '1.015';
+$VERSION = '1.400';
 # This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 @ISA = qw( Palm::Raw );
